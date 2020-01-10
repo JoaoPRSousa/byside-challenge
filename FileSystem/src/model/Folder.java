@@ -36,7 +36,7 @@ public class Folder extends FileSystem {
     }
 
     /**
-     * Constructor included to instantiate complete Folder objects
+     * Folder constructor where the name, read only property, inner folder list and file list are indicated
      *
      * @param name         Folder's name
      * @param readOnly     true if the folder is available for read only, false if not
@@ -47,6 +47,18 @@ public class Folder extends FileSystem {
         super(name, readOnly);
         this.innerFolders = innerFolders;
         this.fileList = fileList;
+    }
+
+    /**
+     * Folder constructor where the name and read only property are indicated
+     *
+     * @param name         Folder's name
+     * @param readOnly     true if the folder is available for read only, false if not
+     */
+    public Folder(String name, boolean readOnly) {
+        super(name, readOnly);
+        innerFolders = new ArrayList<>();
+        fileList = new ArrayList<>();
     }
 
     /**
