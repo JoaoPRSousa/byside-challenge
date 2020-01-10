@@ -66,4 +66,20 @@ public class FileController extends BaseController {
         return file;
     }
 
+    /**
+     * Method used to change the indicated File's read only property
+     *
+     * @param file     File to be altered
+     * @param readOnly new read only property
+     * @return the altered File
+     * @throws Exception exception thrown if the File's read only property is already set as the value given
+     */
+    public File setReadOnly(File file, boolean readOnly) throws Exception {
+        if (file.isReadOnly() == readOnly) {
+            throw new Exception("The file's read only property is already set as " + readOnly + "!");
+        }
+        file.setReadOnly(readOnly);
+        return file;
+    }
+
 }
