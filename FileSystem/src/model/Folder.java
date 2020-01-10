@@ -32,6 +32,7 @@ public class Folder extends FileSystem {
                   List<File> fileList) {
         super(name, creationDate, lastModified, readOnly);
         this.innerFolders = innerFolders;
+        this.fileList = fileList;
     }
 
     /**
@@ -55,8 +56,8 @@ public class Folder extends FileSystem {
      */
     public Folder(String name) {
         super(name);
-        this.innerFolders = new ArrayList<>();
-        this.fileList = new ArrayList<>();
+        innerFolders = new ArrayList<>();
+        fileList = new ArrayList<>();
     }
 
     /**
@@ -65,7 +66,7 @@ public class Folder extends FileSystem {
      * @return Folder's inner folders
      */
     public List<Folder> getInnerFolders() {
-        return this.innerFolders;
+        return innerFolders;
     }
 
     /**
@@ -74,7 +75,7 @@ public class Folder extends FileSystem {
      * @return Folder's file list
      */
     public List<File> getFileList() {
-        return this.fileList;
+        return fileList;
     }
 
     /**
@@ -99,8 +100,8 @@ public class Folder extends FileSystem {
      */
     public boolean deleteInnerFolder(Folder folder) throws Exception {
         checkIfReadOnly();
-        if (!this.innerFolders.remove(folder)) {
-            throw new Exception(folder.getName() + " does not exist inside " + this.getName());
+        if (!innerFolders.remove(folder)) {
+            throw new Exception(folder.getName() + " does not exist inside " + getName());
         } else {
             modified();
             return true;
@@ -117,7 +118,7 @@ public class Folder extends FileSystem {
     public boolean addFile(File file) throws Exception {
         checkIfReadOnly();
         modified();
-        return this.fileList.add(file);
+        return fileList.add(file);
     }
 
     /**
@@ -129,7 +130,7 @@ public class Folder extends FileSystem {
      */
     public boolean removeFile(File file) throws Exception {
         checkIfReadOnly();
-        if (!this.fileList.remove(file)) {
+        if (!fileList.remove(file)) {
             throw new Exception(file.getName() + " does not exist inside " + this.getName());
         } else {
             modified();

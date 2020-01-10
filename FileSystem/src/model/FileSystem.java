@@ -3,6 +3,7 @@ package model;
 import java.util.Date;
 
 public abstract class FileSystem {
+
     /*
      * FileSystem's name
      */
@@ -43,6 +44,7 @@ public abstract class FileSystem {
      */
     public FileSystem(String name, boolean readOnly) {
         this.name = name;
+        setInitialDates();
         this.readOnly = readOnly;
     }
 
@@ -53,8 +55,7 @@ public abstract class FileSystem {
      */
     public FileSystem(String name) {
         this.name = name;
-        creationDate = new Date(System.currentTimeMillis());
-        lastModified = creationDate;
+        setInitialDates();
         this.readOnly = false;
     }
 
@@ -64,7 +65,7 @@ public abstract class FileSystem {
      * @return FileSystem's name
      */
     public String getName() {
-        return this.name;
+        return name;
     }
 
     /**
@@ -73,7 +74,7 @@ public abstract class FileSystem {
      * @return FileSystem's creation date
      */
     public Date getCreationDate() {
-        return this.creationDate;
+        return creationDate;
     }
 
     /**
@@ -82,7 +83,7 @@ public abstract class FileSystem {
      * @return FileSystem's last modification date
      */
     public Date getLastModified() {
-        return this.lastModified;
+        return lastModified;
     }
 
     /**
@@ -91,7 +92,7 @@ public abstract class FileSystem {
      * @return true if the FileSystem's available for read only, false if not
      */
     public boolean isReadOnly() {
-        return this.readOnly;
+        return readOnly;
     }
 
     /**
@@ -101,9 +102,8 @@ public abstract class FileSystem {
      * @throws Exception exception thrown if the name given is empty
      */
     public void changeName(String name) throws Exception {
-        if (name.isEmpty()) {
-            throw new Exception("The " + this.getClass().toString().toLowerCase() + " name can not be empty!");
-        }
+        if (name.isEmpty()) throw new Exception("The " + this.getClass().toString().toLowerCase() +
+                " name can not be empty!");
         this.name = name;
         modified();
     }
@@ -124,9 +124,8 @@ public abstract class FileSystem {
      * @throws Exception exception throw if the FileSystem's available for read only
      */
     public void checkIfReadOnly() throws Exception {
-        if (this.readOnly) {
-            throw new Exception("The " + this.getClass().toString().toLowerCase() + " is available for read only!");
-        }
+        if (readOnly) throw new Exception("The " + this.getClass().toString().toLowerCase() +
+                " is available for read only!");
     }
 
     /**
@@ -135,4 +134,10 @@ public abstract class FileSystem {
     public void modified() {
         this.lastModified = new Date(System.currentTimeMillis());
     }
+
+    private void setInitialDates() {
+        creationDate = new Date(System.currentTimeMillis());
+        lastModified = creationDate;
+    }
+
 }
