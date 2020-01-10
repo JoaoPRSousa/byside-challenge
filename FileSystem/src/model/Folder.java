@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -34,6 +35,8 @@ public class Folder {
     public Folder(String name) {
         creationDate = new Date(System.currentTimeMillis());
         this.name = name;
+        this.innerFolders = new ArrayList<>();
+        this.fileList = new ArrayList<>();
         this.readOnly = false;
     }
 }
