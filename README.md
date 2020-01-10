@@ -1,5 +1,3 @@
-A challenge proposed by BySide for an intership application
-
 # Problem
 
 Develop a file system using OO (object oriented) principles.  
