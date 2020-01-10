@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * File class controller
  */
-public class FileController {
+public class FileController extends BaseController {
 
     /**
      * Method used to create a complete File
@@ -64,16 +64,6 @@ public class FileController {
         }
         file.changeName(name);
         return file;
-    }
-
-    /**
-     * Method used to validate the name to be given to the File
-     *
-     * @param name File's name
-     * @throws Exception exception thrown if the name indicated is empty
-     */
-    private void validateName(String name) throws Exception {
-        if (name.isEmpty()) throw new Exception("The file's name can not be empty!");
     }
 
 }
