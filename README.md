@@ -13,3 +13,5 @@ The folder, will, therefore, have a list of folders inside, since a folder can h
 ### File
 The file will only have a name.
 Regarding the extension of the file, it is included in the name.
+
+Later on, an abstract class **FileSystem** was created to include the common methods and attributes of both of previously mentioned classes.
