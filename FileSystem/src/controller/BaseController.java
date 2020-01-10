@@ -3,9 +3,9 @@ package controller;
 public class BaseController {
 
     /**
-     * Method used to validate the name to be given to the File
+     * Method used to validate the name to be given to the object
      *
-     * @param name File's name
+     * @param name object's name
      * @throws Exception exception thrown if the name indicated is empty
      */
     public void validateName(String name) throws Exception {
