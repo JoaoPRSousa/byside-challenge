@@ -50,6 +50,23 @@ public class FileController {
     }
 
     /**
+     * Method used to change the indicated File's name
+     *
+     * @param file File to be renamed
+     * @param name new File's name
+     * @return the renamed File
+     * @throws Exception exception thrown if the name indicated is empty
+     */
+    public File changeFileName(File file, String name) throws Exception {
+        validateName(name);
+        if (file.getName().equals(name)) {
+            throw new Exception("The name given matches the file's name!");
+        }
+        file.changeName(name);
+        return file;
+    }
+
+    /**
      * Method used to validate the name to be given to the File
      *
      * @param name File's name
